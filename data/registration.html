@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.min.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase.min.js"></script> -->
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 24px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid #EEEEEE;
+}
+
+.table-header {
+  display: flex;
+  width: 100%;
+  background: #000;
+  padding: 18px 0;
+}
+
+.table-row {
+  display: flex;
+  width: 100%;
+  padding: 18px 0;
+}
+.table-row:nth-of-type(odd) {
+  background: #EEEEEE;
+}
+
+.table-data, .header__item {
+  flex: 1 1 20%;
+  text-align: center;
+}
+
+.header__item {
+  text-transform: uppercase;
+}
+
+.filter__link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.filter__link::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.filter__link.desc::after {
+  content: "(desc)";
+}
+.filter__link.asc::after {
+  content: "(asc)";
+}
+</style>
+<body>
+    <table class="table">
+        <thead>
+            <th>sdno</th>
+            <th>admission_no</th>
+            <th>aiche_chapter</th>
+            <th>aiche_id</th>
+            <th>college</th>
+            
+            <th>emailid</th>
+            <th>guardianname</th>
+            <th>guardianphone</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>shirtsize</th>
+            <th>src_id</th>
+            <th>transaction_id</th>
+            <th>whatsapp</th>
+            <th>dob</th>
+        </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+    </table>
+    
+</body>
+<script id="MainScript">
+    var firebaseConfig = {
+//   copy your firebase config informations
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+apiKey: "AIzaSyAXIK2TBcwuAh4_qwP_Fg_tE_-NfNQ5ctU",
+authDomain: "formsubmission-a4ae3.firebaseapp.com",
+databaseURL: "https://formsubmission-a4ae3-default-rtdb.firebaseio.com",
+projectId: "formsubmission-a4ae3",
+storageBucket: "formsubmission-a4ae3.appspot.com",
+messagingSenderId: "287960953448",
+appId: "1:287960953448:web:7228ed37cddabf6c0641dd"
+};
+firebase.initializeApp(firebaseConfig);
+var std = 0;
+function selectdata(){
+    firebase.database().ref("contactForm").on('value',
+    function (allrecords){
+        allrecords.forEach(
+            
+        function(curr){
+            // console.log(curr.val())
+                
+            var admission_no = curr.val().admission_no
+
+            var aiche_chapter = curr.val().aiche_chapter
+            var aiche_id = curr.val().aiche_id
+            var college = curr.val().college
+            var dob = curr.val().dob
+            var emailid = curr.val().emailid
+            var guardianname = curr.val().guardianname
+            var guardianphone = curr.val().guardianphone
+            var name = curr.val().name
+            var phone = curr.val().phone
+            var shirtsize = curr.val().shirtsize
+            var src_id = curr.val().src_id
+            var transaction_id = curr.val().transaction_id
+            var whatsapp = curr.val().whatsapp
+            // console.log(phone)
+            
+            var tbody = document.getElementById('tbody')
+
+    var trow = document.createElement('tr')
+    var td0 = document.createElement('td')
+    var td1 = document.createElement('td')
+    var td2 = document.createElement('td')
+    var td3 = document.createElement('td')
+    var td4 = document.createElement('td')
+    var td5 = document.createElement('td')
+    var td6 = document.createElement('td')
+    var td7 = document.createElement('td')
+    var td8 = document.createElement('td')
+    var td9 = document.createElement('td')
+    var td10 = document.createElement('td')
+    var td11 = document.createElement('td')
+    var td12 = document.createElement('td')
+    var td13 = document.createElement('td')
+    var td14 = document.createElement('td')
+    // var td15 = document.createElement('td')
+    td0.innerHTML = std++
+    td1.innerHTML = admission_no
+    td2.innerHTML = aiche_chapter
+    td3.innerHTML = aiche_id
+    td4.innerHTML = college
+    td5.innerHTML = emailid
+    td6.innerHTML = guardianname
+    td7.innerHTML = guardianphone
+    td8.innerHTML = name
+    td9.innerHTML = phone
+    td10.innerHTML = shirtsize
+    td11.innerHTML = src_id
+    td12.innerHTML = transaction_id
+    td13.innerHTML = whatsapp
+    td14.innerHTML = dob
+    // td15.innterHTML = ++std_no
+    trow.appendChild(td0)
+    trow.appendChild(td1)
+    trow.appendChild(td2)
+    trow.appendChild(td3)
+    trow.appendChild(td4)
+    trow.appendChild(td5)
+    trow.appendChild(td6)
+    trow.appendChild(td7)
+    trow.appendChild(td8)
+    trow.appendChild(td9)
+    trow.appendChild(td10)
+    trow.appendChild(td11)
+    trow.appendChild(td12)
+    trow.appendChild(td13)
+    trow.appendChild(td14)
+    // trow.append(t15)
+            tbody.appendChild(trow)
+        }
+            
+             );
+            }
+        )
+    }
+
+
+window.onload = selectdata;
+var std_no = 0;
+
+function additemtotable(
+    
+admission_no,aiche_chapter
+){
+    // console.log(dob)
+    var tbody = document.getElementById('tbody')
+    var trow = document.createElement('tr')
+    var td1 = document.createElement('td')
+    var td2 = document.createElement('td')
+    // var td3 = document.createElement('td')
+    // var td4 = document.createElement('td')
+    // var td5 = document.createElement('td')
+    // var td6 = document.createElement('td')
+    // var td7 = document.createElement('td')
+    // var td8 = document.createElement('td')
+    // var td9 = document.createElement('td')
+    // var td10 = document.createElement('td')
+    // var td11 = document.createElement('td')
+    // var td12 = document.createElement('td')
+    // var td13 = document.createElement('td')
+    // var td14 = document.createElement('td')
+    // var td15 = document.createElement('td')
+    
+    td1.innerHTML = admission_no
+    td2.innerHTML = aiche_chapter
+    // td3.innerHTML = aiche_id
+    // td4.innerHTML = college
+    // td5.innerHTML = emailid
+    // td6.innerHTML = guardianname
+    // td7.innerHTML = guardianphone
+    // td8.innerHTML = name
+    // td9.innerHTML = phone
+    // td10.innerHTML = shirtsize
+    // td11.innerHTML = src_id
+    // td12.innerHTML = transaction_id
+    // td13.innerHTML = whatsapp
+    // td14.innerHTML = dob
+    // td15.innterHTML = ++std_no
+    trow.appendChild(td1)
+    trow.appendChild(td2)
+    // trow.appendChild(td3)
+    // trow.appendChild(td4)
+    // trow.appendChild(td5)
+    // trow.appendChild(td6)
+    // trow.appendChild(td7)
+    // trow.appendChild(td8)
+    // trow.appendChild(td9)
+    // trow.appendChild(td10)
+    // trow.appendChild(td11)
+    // trow.appendChild(td12)
+    // trow.appendChild(td13)
+    // trow.appendChild(td14)
+    // trow.append(t15)
+
+}
+</script>
+</html>
