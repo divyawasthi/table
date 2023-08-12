@@ -16,10 +16,11 @@
 <body>
     <table class="table">
         <thead>
+            <th>sno</th>
             <th>Leadername</th>
-            <th>category</th>
+            <!-- <th>category</th> -->
             <th>college</th>
-            <th>description</th>
+            <!-- <th>description</th> -->
             <th>member1_emailid</th>
             
             <th>member1_phone</th>
@@ -74,16 +75,16 @@ appId: "1:287960953448:web:7228ed37cddabf6c0641dd"
 firebase.initializeApp(firebaseConfig);
 var std = 0;
 function selectdata(){
-    firebase.database().ref("k12").on('value',
+    firebase.database().ref("Chem-E-Jeopardy").on('value',
     function (allrecords){
         allrecords.forEach(
             
         function(curr){
             // console.log(curr.val())
             var Leadername = curr.val().Leadername
-            var category = curr.val().category
+            // var category = curr.val().category
             var college = curr.val().college
-            var description = curr.val().description
+            // var description = curr.val().description
             var member1_emailid = curr.val().member1_emailid
             var member1_phone = curr.val().member1_phone
             // var member1_ = curr.val().member1_emailid
@@ -129,30 +130,30 @@ function selectdata(){
     var td16 = document.createElement('td')
     var td17 = document.createElement('td')
     var td18 = document.createElement('td')
-    var td19 = document.createElement('td')
-    var td20 = document.createElement('td')
+    // var td19 = document.createElement('td')
+    // var td20 = document.createElement('td')
     // var td15 = document.createElement('td')
     td0.innerHTML = std++
     td1.innerHTML = Leadername
-    td2.innerHTML = category
-    td3.innerHTML = college
-    td4.innerHTML = description
-    td5.innerHTML = member1_emailid
-    td6.innerHTML = member1_phone
-    td7.innerHTML = member1_srcid
-    td8.innerHTML = member2_emailid
-    td9.innerHTML = member2_name
-    td10.innerHTML = member2_phone
-    td11.innerHTML = member2_srcid
-    td12.innerHTML = member3_emailid
-    td13.innerHTML = member3_name
-    td14.innerHTML = member3_phone
-    td15.innerHTML = member3_srcid
-    td16.innerHTML = member4_emailid
-    td17.innerHTML = member4_name 
-    td18.innerHTML = member4_phone
-    td19.innerHTML = member4_srcid
-    td20.innerHTML = teamname
+    // td2.innerHTML = category
+    td2.innerHTML = college
+    // td4.innerHTML = description
+    td3.innerHTML = member1_emailid
+    td4.innerHTML = member1_phone
+    td5.innerHTML = member1_srcid
+    td6.innerHTML = member2_emailid
+    td7.innerHTML = member2_name
+    td8.innerHTML = member2_phone
+    td9.innerHTML = member2_srcid
+    td10.innerHTML = member3_emailid
+    td11.innerHTML = member3_name
+    td12.innerHTML = member3_phone
+    td13.innerHTML = member3_srcid
+    td14.innerHTML = member4_emailid
+    td15.innerHTML = member4_name 
+    td16.innerHTML = member4_phone
+    td17.innerHTML = member4_srcid
+    td18.innerHTML = teamname
     // td15.innterHTML = ++std_no
     trow.appendChild(td0)
     trow.appendChild(td1)
@@ -173,8 +174,8 @@ function selectdata(){
     trow.appendChild(td16)
     trow.appendChild(td17)
     trow.appendChild(td18)
-    trow.appendChild(td19)
-    trow.appendChild(td20)
+    // trow.appendChild(td19)
+    // trow.appendChild(td20)
     // trow.append(t15)
             tbody.appendChild(trow)
         }
